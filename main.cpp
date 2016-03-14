@@ -2,9 +2,8 @@ extern "C" {
 #include <Python.h>
 #include <lua.h>
 #include <lauxlib.h>
-#include <lualib.h>
-#include <string.h>
 #include <stdlib.h>
+#include <lualib.h>
 #include <string.h>
 }
 
