@@ -153,16 +153,16 @@ static PyObject *eval(PyObject *self, PyObject *args, PyObject *key_args) {
     PyObject *glob = Py_None, *loc = Py_None;
     const char *expr;
     static char *params[4];
-    params[0] = "expr";
-    params[1] = "glob";
-    params[2] = "loc";
+    params[0] = const_cast<char*>("expr");
+    params[1] = const_cast<char*>("glob");
+    params[2] = const_cast<char*>("loc");
     params[3] = NULL;
     
     if (PyArg_ParseTupleAndKeywords(args, key_args, "s|OO", params, &expr, &glob, &loc)) {
         char *prog;
         if (strchr(expr, '\n') == NULL) {
             prog = reinterpret_cast<char*>(calloc(strlen(expr) + 8, 1));
-            strcpy(prog, "return ");
+            strcpy(prog, const_cast<char*>("return "));
             strcat(prog, expr);
         } else {
             prog = reinterpret_cast<char*>(calloc(strlen(expr) + 1, 1));
